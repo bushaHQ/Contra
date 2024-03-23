@@ -28,7 +28,7 @@ class CounterView extends ContraView<CounterController> {
             title: const Text('Contra Example'),
           ),
           body: Center(
-            child: Text("${ref.watch(counterProvider)}"),
+            child: Text("${controller.counter(ref)}"),
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () => controller.increment(ref),
