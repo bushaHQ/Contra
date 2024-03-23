@@ -1,0 +1,21 @@
+import 'package:contra/src/controller.dart';
+import 'package:flutter/material.dart';
+
+import 'src.dart';
+
+/// Base class for [ContraView].
+abstract class ContraView<C extends ContraController> extends ContraViewController {
+  /// Base constructor for [ContraView].
+  const ContraView(
+    this.controller, {
+    super.key,
+  });
+
+  /// [ContraView] controller, we can use this to progate things later, such us intializing.
+  final C controller;
+
+  /// Function will be called when he model from [controller] changes.
+  @override
+  @protected
+  Widget build(BuildContext context);
+}
