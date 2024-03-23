@@ -1,39 +1,56 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Centa
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+![coverage][coverage_badge]
+[![License: MIT][license_badge]][license_link]
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Minimal Internal Package to manage MVC Architecture in our app
 
-## Features
+---
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+It is still under `development`!!!!
 
-## Getting started
+As we continue with our project, it is still under development, and we will improve it accordingly.
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+The idea is to integrate Riverpod with our controller, providing a proper way to manage our project effectively.
 
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
+ContraView- to hold most view of which we can progate with our controller.
 ```dart
-const like = 'sample';
+class CounterView extends ContraView<CounterController> {
+  CounterView() : super(CounterController());
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer(
+      builder: (context, ref, child) {
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text('Contra Example'),
+          ),
+          body: Center(
+            child: Text("${ref.watch(counterProvider)}"),
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () => controller.increment(ref),
+            child: const Icon(Icons.add),
+          ),
+        );
+      },
+    );
+  }
+}
 ```
 
-## Additional information
+ContraController - to hold most of our view logic.
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```dart
+....
+
+class CounterController extends ContraController {
+  CounterController() : super();
+
+  void increment(WidgetRef ref) {
+    ref.read(counterProvider.notifier).state++;
+  }
+}
+```
