@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// ContraController is a abstract class that is used to manage the state of the
-/// model and update the screen when the model changes.
-/// M is the type of the model.
+/// ContraController is a abstract class that is used to manage our methods
 abstract class ContraController {
   /// Creates a [ContraController]
   ContraController();
