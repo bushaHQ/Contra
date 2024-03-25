@@ -1,5 +1,6 @@
 import 'package:contra/src/controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'src.dart';
 
@@ -14,8 +15,13 @@ abstract class ContraView<C extends ContraController> extends ContraViewControll
   /// [ContraView] controller, we can use this to progate things later, such us intializing.
   final C controller;
 
+  @override
+  void supplyRef(WidgetRef value) {
+    controller.ref = value;
+  }
+
   /// Function will be called when he model from [controller] changes.
   @override
   @protected
-  Widget build(BuildContext context);
+  Widget build(BuildContext context, WidgetRef ref);
 }

@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-abstract class ContraViewController extends Widget {
+abstract class ContraViewController extends ConsumerStatefulWidget {
   const ContraViewController({super.key});
 
   @protected
-  Widget build(BuildContext context);
+  Widget build(BuildContext contex, WidgetRef ref);
+
+  @protected
+  void supplyRef(WidgetRef value);
 
   @override
-  ComponentElement createElement() => _MViewCElement(this);
+  ConsumerState<ConsumerStatefulWidget> createState() => _ContraViewControllerState();
 }
 
-class _MViewCElement extends ComponentElement {
-  _MViewCElement(ContraViewController super.widget);
-
+class _ContraViewControllerState extends ConsumerState<ContraViewController> {
   @override
-  Widget build() => (widget as ContraViewController).build(this);
-
-  @override
-  void update(Widget newWidget) {
-    super.update(newWidget);
-    assert(widget == newWidget, 'widget != newWidget');
-    rebuild(force: true);
+  Widget build(BuildContext context) {
+    (widget).supplyRef(ref);
+    return (widget).build(context, ref);
   }
 }
