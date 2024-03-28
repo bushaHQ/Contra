@@ -30,7 +30,7 @@ class CounterView extends ContraView<CounterController> {
   CounterView({super.key}) : super(CounterController());
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Contra Example'),

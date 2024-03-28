@@ -23,5 +23,5 @@ abstract class ContraView<C extends ContraController> extends ContraViewControll
   /// Function will be called when he model from [controller] changes.
   @override
   @protected
-  Widget build(BuildContext context, WidgetRef ref);
+  Widget build(BuildContext context);
 }
