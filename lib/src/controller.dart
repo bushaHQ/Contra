@@ -5,7 +5,7 @@ abstract class ContraViewController extends ConsumerStatefulWidget {
   const ContraViewController({super.key});
 
   @protected
-  Widget build(BuildContext contex, WidgetRef ref);
+  Widget build(BuildContext contex);
 
   @protected
   void supplyRef(WidgetRef value);
@@ -18,6 +18,6 @@ class _ContraViewControllerState extends ConsumerState<ContraViewController> {
   @override
   Widget build(BuildContext context) {
     (widget).supplyRef(ref);
-    return (widget).build(context, ref);
+    return (widget).build(context);
   }
 }

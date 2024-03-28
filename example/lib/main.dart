@@ -21,7 +21,32 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: CounterView(),
+      home: const CounterViewWihtBuilder(),
+    );
+  }
+}
+
+class CounterViewWihtBuilder extends StatelessWidget {
+  const CounterViewWihtBuilder({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ContraViewBuilder(
+      controllerBuilder: () => CounterController(),
+      builder: (context, controller) {
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text('Contra Example'),
+          ),
+          body: Center(
+            child: Text("${controller.counter}"),
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () => controller.increment(),
+            child: const Icon(Icons.add),
+          ),
+        );
+      },
     );
   }
 }
@@ -30,7 +55,7 @@ class CounterView extends ContraView<CounterController> {
   CounterView({super.key}) : super(CounterController());
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Contra Example'),
