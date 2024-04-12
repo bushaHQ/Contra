@@ -17,7 +17,7 @@ abstract class ContraController {
 
   /// Returns the busy status for an object if it exists. Returns false if not present
   bool busy(Object? object) {
-    var element = ref.read(busyStateHelperProvider.notifier);
+    var element = ref.watch(busyStateHelperProvider.notifier);
     return element.busy(object);
   }
 
