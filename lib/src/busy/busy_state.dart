@@ -5,14 +5,14 @@ part 'busy_state.g.dart';
 @riverpod
 class BusyStateHelper extends _$BusyStateHelper {
   @override
-  Map<int, bool> build() {
+  Map<String, bool> build() {
     return _busyStates;
   }
 
-  final Map<int, bool> _busyStates = <int, bool>{};
+  final Map<String, bool> _busyStates = <String, bool>{};
 
   /// Returns the busy status for an object if it exists. Returns false if not present
-  bool busy(Object? object) => state[object.hashCode] ?? false;
+  bool busy(String object) => state[object.hashCode] ?? false;
 
   // /// Returns the busy status of the ViewModel
   // bool get isBusy => busy(this);
@@ -22,8 +22,8 @@ class BusyStateHelper extends _$BusyStateHelper {
 
   /// Sets the busy state for the object equal to the value passed in and notifies Listeners
   /// If you're using a primitive type the value SHOULD NOT BE CHANGED, since Hashcode uses == value
-  void setBusyForObject(Object? object, bool value) {
-    _busyStates[object.hashCode] = value;
+  void setBusyForObject(String object, bool value) {
+    _busyStates[object] = value;
     state = _busyStates;
   }
 }

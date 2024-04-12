@@ -16,14 +16,14 @@ abstract class ContraController {
   late WidgetRef _ref;
 
   /// Returns the busy status for an object if it exists. Returns false if not present
-  bool busy(Object? object) {
+  bool busy(String object) {
     var element = ref.watch(busyStateHelperProvider.notifier);
     return element.busy(object);
   }
 
   /// Sets the busy state for the object equal to the value passed in and notifies Listeners
   /// If you're using a primitive type the value SHOULD NOT BE CHANGED, since Hashcode uses == value
-  void setBusy(Object? object, bool value) {
+  void setBusy(String object, bool value) {
     var busy = ref.read(busyStateHelperProvider.notifier);
     return busy.setBusyForObject(object, value);
   }
