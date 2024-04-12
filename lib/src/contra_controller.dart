@@ -1,3 +1,4 @@
+import 'package:contra/src/busy/busy_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -13,6 +14,19 @@ abstract class ContraController {
   WidgetRef get ref => _ref;
 
   late WidgetRef _ref;
+
+  /// Returns the busy status for an object if it exists. Returns false if not present
+  bool busy(Object? object) {
+    var element = ref.read(busyStateHelperProvider.notifier);
+    return element.busy(object);
+  }
+
+  /// Sets the busy state for the object equal to the value passed in and notifies Listeners
+  /// If you're using a primitive type the value SHOULD NOT BE CHANGED, since Hashcode uses == value
+  void setBusyForObject(Object? object, bool value) {
+    var busy = ref.read(busyStateHelperProvider.notifier);
+    return busy.setBusyForObject(object, value);
+  }
 
   /// Called when this object is removed from the tree permanently.
   /// The framework calls this method when this [State] object will never
