@@ -24,6 +24,6 @@ class BusyStateHelper extends _$BusyStateHelper {
   /// If you're using a primitive type the value SHOULD NOT BE CHANGED, since Hashcode uses == value
   void setBusyForObject(Object? object, bool value) {
     _busyStates[object.hashCode] = value;
-    state[object.hashCode] = value;
+    state = _busyStates;
   }
 }
