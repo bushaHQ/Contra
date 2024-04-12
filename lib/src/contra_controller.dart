@@ -23,7 +23,7 @@ abstract class ContraController {
 
   /// Sets the busy state for the object equal to the value passed in and notifies Listeners
   /// If you're using a primitive type the value SHOULD NOT BE CHANGED, since Hashcode uses == value
-  void setBusyForObject(Object? object, bool value) {
+  void setBusy(Object? object, bool value) {
     var busy = ref.read(busyStateHelperProvider.notifier);
     return busy.setBusyForObject(object, value);
   }

@@ -12,7 +12,7 @@ class BusyStateHelper extends _$BusyStateHelper {
   final Map<int, bool> _busyStates = <int, bool>{};
 
   /// Returns the busy status for an object if it exists. Returns false if not present
-  bool busy(Object? object) => _busyStates[object.hashCode] ?? false;
+  bool busy(Object? object) => state[object.hashCode] ?? false;
 
   // /// Returns the busy status of the ViewModel
   // bool get isBusy => busy(this);
