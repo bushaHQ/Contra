@@ -39,7 +39,33 @@ class CounterViewWihtBuilder extends StatelessWidget {
             title: const Text('Contra Example'),
           ),
           body: Center(
-            child: Text("${controller.counter}"),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("${controller.counter} - loading ${controller.isBusy}"),
+                const SizedBox(
+                  height: 20,
+                ),
+                Text("loading meta object ${controller.busy(controller.metaObject)}"),
+                const SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(
+                  onPressed: () => controller.toggle(),
+                  child: const Text('Toggle State'),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(
+                  onPressed: () => controller.toggleKnownObject(),
+                  child: const Text('Toggle MetaObject'),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+              ],
+            ),
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () => controller.increment(),
@@ -74,8 +100,26 @@ class CounterView extends ContraView<CounterController> {
 class CounterController extends ContraController {
   CounterController() : super();
 
+  final metaObject = 'deving';
+
   void increment() {
     ref.read(counterProvider.notifier).state++;
+  }
+
+  void toggle() {
+    if (isBusy) {
+      setBusy(false);
+    } else {
+      setBusy(true);
+    }
+  }
+
+  void toggleKnownObject() {
+    if (busy(metaObject)) {
+      setBusyForObject(metaObject, false);
+    } else {
+      setBusyForObject(metaObject, true);
+    }
   }
 
   int get counter => ref.watch(counterProvider);
