@@ -107,19 +107,11 @@ class CounterController extends ContraController {
   }
 
   void toggleBusyState() {
-    if (isBusy) {
-      setBusy(false);
-    } else {
-      setBusy(true);
-    }
+    setBusy(!isBusy);
   }
 
   void toggleMetaObjectBusyState() {
-    if (busy(metaObject)) {
-      setBusyForObject(metaObject, false);
-    } else {
-      setBusyForObject(metaObject, true);
-    }
+    setBusyForObject(metaObject, !busy(metaObject));
   }
 
   int get counter => ref.watch(counterProvider);
