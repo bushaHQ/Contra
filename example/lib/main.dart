@@ -51,14 +51,14 @@ class CounterViewWihtBuilder extends StatelessWidget {
                   height: 20,
                 ),
                 ElevatedButton(
-                  onPressed: () => controller.toggle(),
+                  onPressed: () => controller.toggleBusyState(),
                   child: const Text('Toggle State'),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 ElevatedButton(
-                  onPressed: () => controller.toggleKnownObject(),
+                  onPressed: () => controller.toggleMetaObjectBusyState(),
                   child: const Text('Toggle MetaObject'),
                 ),
                 const SizedBox(
@@ -106,7 +106,7 @@ class CounterController extends ContraController {
     ref.read(counterProvider.notifier).state++;
   }
 
-  void toggle() {
+  void toggleBusyState() {
     if (isBusy) {
       setBusy(false);
     } else {
@@ -114,7 +114,7 @@ class CounterController extends ContraController {
     }
   }
 
-  void toggleKnownObject() {
+  void toggleMetaObjectBusyState() {
     if (busy(metaObject)) {
       setBusyForObject(metaObject, false);
     } else {

@@ -23,13 +23,15 @@ abstract class ContraController {
 
   late String _id;
 
+  // Returns the busy status for the given object. If the object is present, it returns its busy status, otherwise it returns false.
   bool _isBusy(Object object) {
     return ref.watch(contraBusyStateProvider(_id))[object.hashCode] ?? false;
   }
 
-  /// Returns the busy status for an object if it exists. Returns false if not present
+  // Returns the busy status for the current ContraController object.
   bool get isBusy => _isBusy(this);
 
+  // Returns the busy status for the given object.
   bool busy(Object object) {
     return _isBusy(object);
   }
@@ -50,6 +52,8 @@ abstract class ContraController {
   void setBusy(bool value) {
     setBusyForObject(this, value);
   }
+
+  // Executes a future while setting the busy state for the provided object, then returns the result.
 
   Future<T> runBusyFuture<T>(
     Future<T> busyFuture, {
