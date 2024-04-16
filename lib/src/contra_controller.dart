@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+class ContraController extends _ContraControllerMain {}
+
 /// ContraController is a abstract class that is used to manage our methods
-abstract class ContraController {
-  /// Creates a [ContraController]
-  ContraController() {
+abstract class _ContraControllerMain {
+  /// Creates a [_ContraControllerMain]
+  _ContraControllerMain() {
     /// thinking of using hashcode as an id
     /// let's see how it goes.
     _id = ContraGenerator.generateId();
