@@ -1,5 +1,4 @@
-import 'package:contra/contra.dart';
-import 'package:contra/src/provider/contra.dart';
+import 'package:contra/src/src.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
