@@ -37,7 +37,9 @@ class Home extends StatelessWidget {
               },
               controllerBuilder: () => RandomTextController(),
             ),
-            const _AnotherHome(),
+            const _AnotherHome(
+              key: ValueKey('another'),
+            ),
           ],
         ),
       ),
