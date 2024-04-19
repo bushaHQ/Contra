@@ -13,7 +13,7 @@ As we continue with our project, it is still under development, and we will impr
 
 The idea is to integrate Riverpod with our controller, providing a proper way to manage our project effectively.
 
-ContraView- to hold most view of which we can progate with our controller.
+`ContraView`- to hold most view of which we can progate with our controller.
 
 ```dart
 class RandomTextView extends StatelessWidget {
@@ -49,7 +49,7 @@ class RandomTextView extends StatelessWidget {
 
 ```
 
-ContraController - to hold most of our view logic.
+`ContraController` - to hold most of the logics.
 
 ```dart
 
@@ -77,7 +77,7 @@ final _textProvider = StateProvider((ref) => 'hello');
 
 ```
 
-In a bid to make the codebase highly maintainable, we introduced a contra widget, that allows subwidgets of the ContraViewBuilder access the controller easily.
+In a bid to make the codebase highly maintainable, we introduced a `ContraWidget`, that allows subwidgets of the ContraViewBuilder access the controller easily.
 
 ```dart
 class RandomTextSubWidget extends ContraWidget<RandomTextController>{
