@@ -3,17 +3,20 @@
 ![coverage][coverage_badge]
 [![License: MIT][license_badge]][license_link]
 
-Minimal Internal Package to manage MVC Architecture in our app
+Centa is a minimal internal package designed to manage the MVC (Model-View-Controller) architecture within our app. It is currently under development, and improvements will be made accordingly. <br /><br/>
+The primary goal of Centa is to integrate Riverpod with our controller, providing a proper way to manage our project effectively.
+<br />
 
----
+## Features
 
-It is still under `development`!!!!
+- ContraView: A widget to hold most views that can be propagated with our controller.
+- ContraController: A controller to hold most of our view logic.
+- ContraWidget: A widget that allows subwidgets of the ContraViewBuilder to access the controller easily.
+- Internal Busy State Management: Each controller has an internal busy state that tracks the loading state of views, making it easy to set the loading state of a view.
 
-As we continue with our project, it is still under development, and we will improve it accordingly.
+## Usage
 
-The idea is to integrate Riverpod with our controller, providing a proper way to manage our project effectively.
-
-`ContraView`- to hold most view of which we can progate with our controller.
+### ContraView Example
 
 ```dart
 class RandomTextView extends StatelessWidget {
@@ -49,7 +52,7 @@ class RandomTextView extends StatelessWidget {
 
 ```
 
-`ContraController` - to hold most of the logics.
+### ContraController Example
 
 ```dart
 
@@ -77,7 +80,7 @@ final _textProvider = StateProvider((ref) => 'hello');
 
 ```
 
-In a bid to make the codebase highly maintainable, we introduced a `ContraWidget`, that allows subwidgets of the ContraViewBuilder access the controller easily.
+### ContraWidget Example
 
 ```dart
 class RandomTextSubWidget extends ContraWidget<RandomTextController>{
@@ -95,7 +98,7 @@ class RandomTextSubWidget extends ContraWidget<RandomTextController>{
 }
 ```
 
-Also, each controller has an internal busy state it tracks. This makes very easy to set the loading state of a view.
+### Internal Busy State Management Example
 
 ```dart
 
