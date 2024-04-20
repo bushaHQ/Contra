@@ -40,7 +40,8 @@ class ContraViewBuilder<T extends ContraController> extends StatelessWidget {
   }
 }
 
-class _ContraViewBuilder<T extends ContraController> extends ConsumerStatefulWidget {
+class _ContraViewBuilder<T extends ContraController>
+    extends ConsumerStatefulWidget {
   const _ContraViewBuilder({
     super.key,
     required this.builder,
@@ -61,7 +62,8 @@ class _ContraViewBuilder<T extends ContraController> extends ConsumerStatefulWid
   final Widget Function(BuildContext context, T controller) builder;
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _ContraViewControllerState<T>();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _ContraViewControllerState<T>();
 }
 
 class _ContraViewControllerState<T extends ContraController>
@@ -95,7 +97,8 @@ class _ContraViewControllerState<T extends ContraController>
   }
 }
 
-abstract class ContraWidget<T extends ContraController> extends ConsumerStatefulWidget {
+abstract class ContraWidget<T extends ContraController>
+    extends ConsumerStatefulWidget {
   const ContraWidget({super.key});
 
   @protected

@@ -1,11 +1,11 @@
-import 'package:contra/src/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'src.dart';
 
 /// Base class for [ContraView].
-abstract class ContraView<C extends ContraController> extends ContraViewController {
+abstract class ContraView<C extends ContraController>
+    extends ContraViewController {
   /// Base constructor for [ContraView].
   const ContraView(
     this.controller, {

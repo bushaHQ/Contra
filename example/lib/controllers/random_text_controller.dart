@@ -10,10 +10,12 @@ class RandomTextController extends ContraController {
 
   String _generateRandomDynamicText() {
     final random = Random();
-    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const characters =
+        'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
     return String.fromCharCodes(
-      List.generate(8, (_) => characters.codeUnitAt(random.nextInt(characters.length))),
+      List.generate(
+          8, (_) => characters.codeUnitAt(random.nextInt(characters.length))),
     );
   }
 

@@ -22,7 +22,8 @@ class CounterViewWihtBuilder extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                Text("loading meta object ${controller.busy(controller.metaObject)}"),
+                Text(
+                    "loading meta object ${controller.busy(controller.metaObject)}"),
                 const SizedBox(
                   height: 20,
                 ),

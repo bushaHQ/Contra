@@ -11,7 +11,8 @@ abstract class ContraViewController extends ConsumerStatefulWidget {
   void supplyRef(WidgetRef value);
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _ContraViewControllerState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _ContraViewControllerState();
 }
 
 class _ContraViewControllerState extends ConsumerState<ContraViewController> {
