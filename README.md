@@ -102,6 +102,7 @@ class RandomTextView extends StatelessWidget {
               Text(controller.text),
               const SizedBox(height: 20),
               const RandomTextSubWidget(),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed:(){
                   controller.generateText();
