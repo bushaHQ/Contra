@@ -143,7 +143,7 @@ class RandomTextController extends ContraController{
 
   String get text => ref.watch(_textProvider);
 
-  String _generateRandomDynamicText() {
+  Future<String> _generateRandomDynamicText() {
     final random = Random();
     const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
@@ -178,7 +178,7 @@ class RandomTextController extends ContraController{
 
   String get text => ref.watch(_textProvider);
 
-  String _generateRandomDynamicText() {
+  Future<String> _generateRandomDynamicText() {
     final random = Random();
     const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
@@ -210,11 +210,9 @@ You could also set the busy state of the controller simultaneously while running
 class RandomTextController extends ContraController{
   RandomTextController(): super();
 
-
-
   String get text => ref.watch(_textProvider);
 
-  String _generateRandomDynamicText() {
+  Future<String> _generateRandomDynamicText() {
     final random = Random();
     const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
