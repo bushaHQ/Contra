@@ -1,7 +1,7 @@
 # Contra
 
 ![coverage][coverage_badge]
-[![License: MIT][license_badge]][license_link]
+[![License: BSD-1-Clause][license_badge]][license_link]
 
 Contra is a minimal internal package designed to manage the MVC (Model-View-Controller) architecture within our app. It is currently under development, and improvements will be made accordingly. <br /><br/>
 The primary goal of Contra is to integrate Riverpod with our controller, providing a proper way to manage our project effectively.
@@ -247,5 +247,5 @@ final _textProvider = StateProvider((ref) => 'hello');
 [coverage_badge]: coverage_badge.svg
 [flutter_localizations_link]: https://api.flutter.dev/flutter/flutter_localizations/flutter_localizations-library.html
 [internationalization_link]: https://flutter.dev/docs/development/accessibility-and-localization/internationalization
-[license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
+[license_badge]: https://img.shields.io/badge/License-BSD_3--Clause-blue.svg
 [license_link]: https://opensource.org/licenses/MIT
