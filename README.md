@@ -83,7 +83,43 @@ final _textProvider = StateProvider((ref) => 'hello');
 ### ContraWidget Example
 
 ```dart
+
+
+class RandomTextView extends StatelessWidget {
+  const RandomTextView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ContraViewBuilder(
+      builder : (BuildContext context, RandomTextController controller){
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text('Contra Example'),
+          ),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children : [
+              Text(controller.text),
+              const SizedBox(height: 20),
+              const RandomTextSubWidget(),
+              ElevatedButton(
+                onPressed:(){
+                  controller.generateText();
+                },
+                child: const Text('Generate'),
+              ),
+            ],
+          ),
+        );
+      },
+      controllerBuilder: () => RandomTextController(),
+    );
+  }
+}
+
 class RandomTextSubWidget extends ContraWidget<RandomTextController>{
+  const RandomTextSubWidget({super.key});
+
   @override
   Widget build(BuildContext context, RandomTextController controller){
     return Text(
@@ -96,6 +132,7 @@ class RandomTextSubWidget extends ContraWidget<RandomTextController>{
     );
   }
 }
+
 ```
 
 ### Internal Busy State Management Example
