@@ -1,10 +1,10 @@
-# Centa
+# Contra
 
 ![coverage][coverage_badge]
 [![License: MIT][license_badge]][license_link]
 
-Centa is a minimal internal package designed to manage the MVC (Model-View-Controller) architecture within our app. It is currently under development, and improvements will be made accordingly. <br /><br/>
-The primary goal of Centa is to integrate Riverpod with our controller, providing a proper way to manage our project effectively.
+Contra is a minimal internal package designed to manage the MVC (Model-View-Controller) architecture within our app. It is currently under development, and improvements will be made accordingly. <br /><br/>
+The primary goal of Contra is to integrate Riverpod with our controller, providing a proper way to manage our project effectively.
 <br />
 
 ## Features
