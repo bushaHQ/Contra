@@ -10,12 +10,10 @@ class RandomTextController extends ContraController {
 
   String _generateRandomDynamicText() {
     final random = Random();
-    const characters =
-        'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
     return String.fromCharCodes(
-      List.generate(
-          8, (_) => characters.codeUnitAt(random.nextInt(characters.length))),
+      List.generate(8, (_) => characters.codeUnitAt(random.nextInt(characters.length))),
     );
   }
 
@@ -31,6 +29,22 @@ class RandomTextController extends ContraController {
 
   void toggleMetaObjectBusyState() {
     setBusyForObject(metaObject, !busy(metaObject));
+  }
+
+  void toogleControllerError() {
+    if (controllerError == null) {
+      setError(_generateRandomDynamicText());
+    } else {
+      setError(null);
+    }
+  }
+
+  void toggleStateObjectError() {
+    if (hasObjectError('state')) {
+      setErrorForObject('state', null);
+    } else {
+      setErrorForObject('state', _generateRandomDynamicText());
+    }
   }
 
   String get text => ref.watch(_textProvider);
