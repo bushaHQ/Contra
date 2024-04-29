@@ -1,5 +1,6 @@
-import 'package:contra/src/busy/contra_busy_state.dart';
+import 'package:contra/src/provider/busy/contra_busy_state.dart';
 import 'package:contra/src/helpers/contra_generator.dart';
+import 'package:contra/src/provider/error/contra_error_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -24,6 +25,37 @@ abstract class _ContraControllerMain {
   late WidgetRef _ref;
 
   late String _id;
+
+  bool _hasError(Object object) {
+    return ref.watch(contraErrorStateProvider(_id))[object.hashCode]?.isNotEmpty ?? false;
+  }
+
+  bool get hasError => _hasError(this);
+
+  bool hasObjectError(Object object) {
+    return _hasError(object);
+  }
+
+  dynamic _getError(Object object) {
+    return ref.watch(contraErrorStateProvider(_id))[object.hashCode];
+  }
+
+  dynamic get controllerError => _getError(this);
+
+  dynamic objectError(Object object) {
+    return _getError(object);
+  }
+
+  void setErrorForObject(Object object, dynamic value) {
+    var error = ref.read(
+      contraErrorStateProvider(_id).notifier,
+    );
+    error.setErrorForObject(object, value);
+  }
+
+  void setError(dynamic value) {
+    setErrorForObject(this, value);
+  }
 
   // Returns the busy status for the given object. If the object is present, it returns its busy status, otherwise it returns false.
   bool _isBusy(Object object) {
