@@ -87,7 +87,7 @@ class _HomeError extends ContraWidget<RandomTextController> {
 }
 
 class _AnotherHome extends StatelessWidget {
-  const _AnotherHome({super.key});
+  const _AnotherHome();
 
   @override
   Widget build(BuildContext context) {
