@@ -32,14 +32,19 @@ class Home extends StatelessWidget {
                       },
                       child: const Text('process'),
                     ),
+                    const SizedBox(
+                      height: 100,
+                    ),
+                    _HomeError(),
                   ],
                 );
               },
               controllerBuilder: () => RandomTextController(),
             ),
-            const _AnotherHome(
-              key: ValueKey('another'),
+            const SizedBox(
+              height: 20,
             ),
+            const _AnotherHome(),
           ],
         ),
       ),
@@ -59,8 +64,30 @@ class _HomeMeta extends ContraWidget<RandomTextController> {
   }
 }
 
+class _HomeError extends ContraWidget<RandomTextController> {
+  @override
+  Widget build(BuildContext context, RandomTextController controller) {
+    return Column(
+      children: [
+        Text('Controller has error ${controller.hasError}'),
+        Text('Controller error ${controller.controllerError}'),
+        ElevatedButton(
+          onPressed: controller.toogleControllerError,
+          child: const Text('toggle error'),
+        ),
+        Text('State object has error ${controller.hasObjectError('state')}'),
+        Text('Controller error ${controller.objectError('state')}'),
+        ElevatedButton(
+          onPressed: controller.toggleStateObjectError,
+          child: const Text('toggle error'),
+        ),
+      ],
+    );
+  }
+}
+
 class _AnotherHome extends StatelessWidget {
-  const _AnotherHome({super.key});
+  const _AnotherHome();
 
   @override
   Widget build(BuildContext context) {
