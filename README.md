@@ -83,7 +83,44 @@ final _textProvider = StateProvider((ref) => 'hello');
 ### ContraWidget Example
 
 ```dart
+
+
+class RandomTextView extends StatelessWidget {
+  const RandomTextView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ContraViewBuilder(
+      builder : (BuildContext context, RandomTextController controller){
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text('Contra Example'),
+          ),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children : [
+              Text(controller.text),
+              const SizedBox(height: 20),
+              const RandomTextSubWidget(),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed:(){
+                  controller.generateText();
+                },
+                child: const Text('Generate'),
+              ),
+            ],
+          ),
+        );
+      },
+      controllerBuilder: () => RandomTextController(),
+    );
+  }
+}
+
 class RandomTextSubWidget extends ContraWidget<RandomTextController>{
+  const RandomTextSubWidget({super.key});
+
   @override
   Widget build(BuildContext context, RandomTextController controller){
     return Text(
@@ -96,6 +133,7 @@ class RandomTextSubWidget extends ContraWidget<RandomTextController>{
     );
   }
 }
+
 ```
 
 ### Internal Busy State Management Example
@@ -143,7 +181,7 @@ class RandomTextController extends ContraController{
 
   String get text => ref.watch(_textProvider);
 
-  String _generateRandomDynamicText() {
+  Future<String> _generateRandomDynamicText() {
     final random = Random();
     const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
@@ -178,7 +216,7 @@ class RandomTextController extends ContraController{
 
   String get text => ref.watch(_textProvider);
 
-  String _generateRandomDynamicText() {
+  Future<String> _generateRandomDynamicText() {
     final random = Random();
     const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
@@ -210,11 +248,9 @@ You could also set the busy state of the controller simultaneously while running
 class RandomTextController extends ContraController{
   RandomTextController(): super();
 
-
-
   String get text => ref.watch(_textProvider);
 
-  String _generateRandomDynamicText() {
+  Future<String> _generateRandomDynamicText() {
     final random = Random();
     const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
