@@ -1,3 +1,8 @@
+## 0.0.5
+
+* Updated Analyzer
+* Fixes Rendering issues
+
 ## 0.0.4
 
 * Added support for hooks
