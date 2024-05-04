@@ -74,7 +74,15 @@ class _ContraViewControllerState<T extends ContraController>
   void initializeController(WidgetRef ref) {
     _controller = ref.read(contraControllerProvider) as T;
     _controller.ref = ref;
+  }
 
+  @override
+  void initState() {
+    callBack();
+    super.initState();
+  }
+
+  void callBack() {
     /// Supply the controller to the view
     WidgetsBinding.instance.addPersistentFrameCallback(
       (timeStamp) {
