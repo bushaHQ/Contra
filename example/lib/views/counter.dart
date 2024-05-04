@@ -12,7 +12,7 @@ class CounterViewWihtBuilder extends StatelessWidget {
       builder: (context, controller) {
         return Scaffold(
           appBar: AppBar(
-            title:  Text(controller.user.value),
+            title: Text(controller.user.value),
           ),
           body: Center(
             child: Column(

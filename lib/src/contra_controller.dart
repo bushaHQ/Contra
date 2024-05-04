@@ -27,7 +27,10 @@ abstract class _ContraControllerMain {
   late String _id;
 
   bool _hasError(Object object) {
-    return ref.watch(contraErrorStateProvider(_id))[object.hashCode]?.isNotEmpty ?? false;
+    return ref
+            .watch(contraErrorStateProvider(_id))[object.hashCode]
+            ?.isNotEmpty ??
+        false;
   }
 
   bool get hasError => _hasError(this);
