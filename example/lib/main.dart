@@ -1,5 +1,4 @@
 import 'package:example/views/counter.dart';
-import 'package:example/views/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
