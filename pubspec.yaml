@@ -1,6 +1,6 @@
 name: contra
 description: "Small Internal Package to manage MVC Architecture in our app" 
-version: 0.0.2
+version: 0.0.3
 homepage: "https://github.com/bushaHQ/Contra"
 
 environment:
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_riverpod: ^2.5.1
+  hooks_riverpod: ^2.5.1
   riverpod_annotation: ^2.3.5
 
 dev_dependencies:

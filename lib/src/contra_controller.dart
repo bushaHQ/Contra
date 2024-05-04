@@ -3,7 +3,7 @@ import 'package:contra/src/helpers/contra_generator.dart';
 import 'package:contra/src/provider/error/contra_error_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ContraController extends _ContraControllerMain {}
 

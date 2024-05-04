@@ -1,3 +1,4 @@
+import 'package:example/views/counter.dart';
 import 'package:example/views/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const Home(),
+      home: const CounterViewWihtBuilder(),
     );
   }
 }
