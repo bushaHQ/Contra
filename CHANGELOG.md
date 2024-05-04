@@ -1,3 +1,9 @@
+## 0.0.4
+
+* Added support for hooks
+* Fixes dispose issues
+* Fixes Contra Builder intilizer issues.
+
 ## 0.0.3
 
 * Added error state to the controller

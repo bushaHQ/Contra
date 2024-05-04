@@ -80,6 +80,24 @@ final _textProvider = StateProvider((ref) => 'hello');
 
 ```
 
+### Managing Local state
+
+Riverpod advises against using its providers for your local state, such as 
+- storing form state
+- selected item
+- animations
+- generally everything that Flutter deals with via a 'controller' (e.g., TextEditingController). 
+
+For these reasons, we have added support for hooks inside our controller, which means every controller can make use of Flutter hooks. However, try to be mindful of how you use the hooks.
+
+```dart
+  final firstName = useState('Contra');
+
+  void update() {
+    firstName.value = 'Supporting Hooks';
+  }
+```
+
 ### ContraWidget Example
 
 ```dart
