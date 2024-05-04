@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'src.dart';
 
 /// Base class for [ContraView].
-abstract class ContraView<C extends ContraController>
-    extends ContraViewController {
+abstract class ContraView<C extends ContraController> extends ContraViewController {
   /// Base constructor for [ContraView].
   const ContraView(
     this.controller, {
@@ -18,6 +17,11 @@ abstract class ContraView<C extends ContraController>
   @override
   void supplyRef(WidgetRef value) {
     controller.ref = value;
+  }
+
+  @override
+  void disposeController() {
+    controller.dispose();
   }
 
   /// Function will be called when he model from [controller] changes.

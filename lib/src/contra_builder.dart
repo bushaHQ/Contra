@@ -1,6 +1,6 @@
 import 'package:contra/src/src.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ContraViewBuilder<T extends ContraController> extends StatelessWidget {
   const ContraViewBuilder({
@@ -40,8 +40,7 @@ class ContraViewBuilder<T extends ContraController> extends StatelessWidget {
   }
 }
 
-class _ContraViewBuilder<T extends ContraController>
-    extends ConsumerStatefulWidget {
+class _ContraViewBuilder<T extends ContraController> extends StatefulHookConsumerWidget {
   const _ContraViewBuilder({
     super.key,
     required this.builder,
@@ -62,8 +61,7 @@ class _ContraViewBuilder<T extends ContraController>
   final Widget Function(BuildContext context, T controller) builder;
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      _ContraViewControllerState<T>();
+  ConsumerState<ConsumerStatefulWidget> createState() => _ContraViewControllerState<T>();
 }
 
 class _ContraViewControllerState<T extends ContraController>
@@ -76,13 +74,11 @@ class _ContraViewControllerState<T extends ContraController>
     _controller.ref = ref;
 
     /// Supply the controller to the view
-    widget.onViewReady?.call(_controller);
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    initializeController(ref);
+    WidgetsBinding.instance.addPersistentFrameCallback(
+      (timeStamp) {
+        widget.onViewReady?.call(_controller);
+      },
+    );
   }
 
   @override
@@ -93,12 +89,12 @@ class _ContraViewControllerState<T extends ContraController>
 
   @override
   Widget build(BuildContext context) {
+    initializeController(ref);
     return widget.builder(context, _controller);
   }
 }
 
-abstract class ContraWidget<T extends ContraController>
-    extends ConsumerStatefulWidget {
+abstract class ContraWidget<T extends ContraController> extends ConsumerStatefulWidget {
   const ContraWidget({super.key});
 
   @protected
