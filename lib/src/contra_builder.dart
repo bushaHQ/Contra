@@ -84,7 +84,7 @@ class _ContraViewControllerState<T extends ContraController>
 
   void callBack() {
     /// Supply the controller to the view
-    WidgetsBinding.instance.addPersistentFrameCallback(
+    WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) {
         widget.onViewReady?.call(_controller);
       },
