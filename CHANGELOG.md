@@ -1,3 +1,9 @@
+## 0.0.6
+* Fixes add post callback issue
+
+## 0.0.6
+* Fixes initilize Rendering issues
+
 ## 0.0.5
 
 * Updated Analyzer

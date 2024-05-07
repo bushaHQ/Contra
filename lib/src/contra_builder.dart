@@ -40,8 +40,7 @@ class ContraViewBuilder<T extends ContraController> extends StatelessWidget {
   }
 }
 
-class _ContraViewBuilder<T extends ContraController>
-    extends StatefulHookConsumerWidget {
+class _ContraViewBuilder<T extends ContraController> extends StatefulHookConsumerWidget {
   const _ContraViewBuilder({
     super.key,
     required this.builder,
@@ -62,8 +61,7 @@ class _ContraViewBuilder<T extends ContraController>
   final Widget Function(BuildContext context, T controller) builder;
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      _ContraViewControllerState<T>();
+  ConsumerState<ConsumerStatefulWidget> createState() => _ContraViewControllerState<T>();
 }
 
 class _ContraViewControllerState<T extends ContraController>
@@ -84,11 +82,7 @@ class _ContraViewControllerState<T extends ContraController>
 
   void callBack() {
     /// Supply the controller to the view
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        widget.onViewReady?.call(_controller);
-      },
-    );
+    widget.onViewReady?.call(_controller);
   }
 
   @override
@@ -104,8 +98,7 @@ class _ContraViewControllerState<T extends ContraController>
   }
 }
 
-abstract class ContraWidget<T extends ContraController>
-    extends ConsumerStatefulWidget {
+abstract class ContraWidget<T extends ContraController> extends ConsumerStatefulWidget {
   const ContraWidget({super.key});
 
   @protected

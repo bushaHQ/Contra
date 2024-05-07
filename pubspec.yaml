@@ -1,6 +1,6 @@
 name: contra
 description: "Small Internal Package to manage MVC Architecture in our app" 
-version: 0.0.5
+version: 0.0.7
 homepage: "https://github.com/bushaHQ/Contra"
 
 environment:
