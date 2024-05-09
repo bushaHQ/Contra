@@ -1,4 +1,8 @@
-## 0.0.6
+## 0.0.8
+* Fixes add post callback issue
+* Added contra hooks builder(dedicated for only hooks)
+
+## 0.0.7
 * Fixes add post callback issue
 
 ## 0.0.6

@@ -1,5 +1,4 @@
 import 'package:contra/contra.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CounterController extends ContraController {
@@ -7,10 +6,12 @@ class CounterController extends ContraController {
 
   final metaObject = 'deving';
 
-  final user = useState('Intial');
+  // final user = useState('Intial');
+  // final hello = ContraNotifier(1);
 
   void increment() {
-    user.value = 'Not age';
+    // user.value = 'Not age';
+
     ref.read(counterProvider.notifier).state++;
   }
 

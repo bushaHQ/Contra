@@ -9,11 +9,12 @@ class CounterViewWihtBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return ContraViewBuilder(
       controllerBuilder: () => CounterController(),
+      // onViewReady: (c)=> c.intialize() ,
       builder: (context, controller) {
         return Scaffold(
           appBar: AppBar(
-            title: Text(controller.user.value),
-          ),
+              // title: Text(controller.user.value),
+              ),
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

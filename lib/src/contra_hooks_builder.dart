@@ -1,9 +1,11 @@
-import 'package:contra/src/src.dart';
+import 'package:contra/contra.dart';
+import 'package:contra/src/provider/controller/contra.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ContraViewBuilder<T extends ContraController> extends StatelessWidget {
-  const ContraViewBuilder({
+class ContraHookViewBuilder<T extends ContraController>
+    extends StatelessWidget {
+  const ContraHookViewBuilder({
     super.key,
     required this.builder,
     required this.controllerBuilder,
@@ -30,7 +32,7 @@ class ContraViewBuilder<T extends ContraController> extends StatelessWidget {
           (ref) => controllerBuilder.call(),
         ),
       ],
-      child: _ContraViewBuilder(
+      child: _ContraHookViewBuilder(
         builder: builder,
         controllerBuilder: controllerBuilder,
         onDispose: onDispose,
@@ -40,9 +42,9 @@ class ContraViewBuilder<T extends ContraController> extends StatelessWidget {
   }
 }
 
-class _ContraViewBuilder<T extends ContraController>
-    extends ConsumerStatefulWidget {
-  const _ContraViewBuilder({
+class _ContraHookViewBuilder<T extends ContraController>
+    extends StatefulHookConsumerWidget {
+  const _ContraHookViewBuilder({
     super.key,
     required this.builder,
     required this.controllerBuilder,
@@ -67,20 +69,25 @@ class _ContraViewBuilder<T extends ContraController>
 }
 
 class _ContraViewControllerState<T extends ContraController>
-    extends ConsumerState<_ContraViewBuilder<T>> {
+    extends ConsumerState<_ContraHookViewBuilder<T>> {
   late T _controller;
 
   /// Initialize the controller
   void initializeController(WidgetRef ref) {
     _controller = ref.read(contraControllerProvider) as T;
     _controller.ref = ref;
-    widget.onViewReady?.call(_controller);
   }
 
   @override
   void initState() {
     super.initState();
-    initializeController(ref);
+
+    /// Supply the controller to the view
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        widget.onViewReady?.call(_controller);
+      },
+    );
   }
 
   @override
@@ -91,26 +98,7 @@ class _ContraViewControllerState<T extends ContraController>
 
   @override
   Widget build(BuildContext context) {
+    initializeController(ref);
     return widget.builder(context, _controller);
-  }
-}
-
-abstract class ContraWidget<T extends ContraController>
-    extends ConsumerStatefulWidget {
-  const ContraWidget({super.key});
-
-  @protected
-  Widget build(BuildContext context, T controller);
-
-  @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _ContraWidgetState();
-}
-
-class _ContraWidgetState extends ConsumerState<ContraWidget> {
-  @override
-  Widget build(BuildContext context) {
-    var controller = ref.read(contraControllerProvider);
-
-    return widget.build(context, controller);
   }
 }
